@@ -1,13 +1,16 @@
 import express from 'express';
 import { CosmosClient } from '@azure/cosmos';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 
-const endpoint = 'https://learningcosmosdbdemo.documents.azure.com:443/';
-const key = 'sPoL7KTdExAgkvoWGY2oTUnCWvOAROiFDeGDEyNTXmKcCpT0zR8by0nFR5dZdUu6ZeMm8zlLinWJACDbtqOMJw=='
-const databaseId = 'learningcosmoscontainer';
-const containerId = 'users';
+const endpoint = process.env.ENDPOINT;
+const key = process.env.KEY;
+const databaseId = process.env.DATABASE_ID;
+const containerId = process.env.CONTAINER_ID;
 
 const client = new CosmosClient({ endpoint, key });
 
